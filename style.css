@@ -69,4 +69,15 @@ body {
     font-size: 20px;
     transition: all .3s ease-in-out;
   }
+
+  .dngr{
+    background-color: #D9534F;
+    border-color: #D43F3A;
+    color: white;
+  }
+
+.ready{
+  background-color: #128666;
+  color: white;
+} 
   
