@@ -1,4 +1,4 @@
-
+//stored time and value get localstorage
 myStoredStuff();
 
 function myStoredStuff() {
@@ -27,97 +27,40 @@ $(document).ready(function () {
     $(".saveBtn").on("click", function () {
         var value = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
-        // Set local storage
+// Set local storage
         localStorage.setItem(time, value);
-
     });
-    $("#currentDay").text(moment().format('LLLL'));
+// moments time
+    // $("#currentDay").text(moment().format('LLLL'));
 });
-// var dayPlanner = [
-//     {
-//       id: 1,
-//       time: "9AM",
-//       value: "wake up"
-//     },
-//     {
-//       id: 2,
-//       time: "10AM",
-//       thing: "work"
-//     }
-//   ];
-
-
-
-
-
-    // if (time && value === null) {
-    //   return;
-    // }
-
-
-//   localStorage.setItem("dayPlanner", JSON.stringify(dayPlanner));
-//   var myStuff = JSON.parse(localStorage.getItem("dayPlanner"));
-//   for (var i = 0; i < myStuff.length; i++) {
-//     console.log(myStuff[i].time);
-//     console.log(myStuff[i].thing);
-//   }
-// vaulesArray.push()
-
-
-// const data = JSON.parse(localStorage.getItem(time, value))
-
-// localStorage.setItem(time, value);
-
-
-
-// getValues();
-
-// function getValues() {
-//     var storedValues = JSON.parse(localStorage.getItem(values));
-
-//     if (storedValues !== null) {
-//         vaulesArray = storedValues;
-//     }
-
-// };
-// get local storage
-// var timeStorage = localStorage.getItem(time);
-// var valueStorage = localStorage.getItem(value);
-
-// deletes local storage
-// localStorage.removeItem(time);
-
-// var obj = {
-//     time: $(this).parent().attr("id"),
-//     value = $(this).siblings(".description").val();
-
-// };
-
-// var stringObj = JSON.stringify(obj)
-
-// localStorage.setItem("obj", stringObj);
-
-// var objFromLocalStorage = localStorage.getItem("obj");
-
-// var  toObj = JSON.parse(objFromLocalStorage)
 
 
 // TIME
-// function showcurrenttime()
-// {
-//    var currentTime = $('#currentDay').text(moment().format('LLLL'));
 
-//     {
-//         if ( < moment().format('LLLL'))
-//         {
-//             $(".description").addClass('dngr');
-//         };
-//         // if ($(this).data('#currentDay') > moment().format('LLLL') && $(this).data('#currentDay') < moment().add('h',1).format('LLLL'))
-//         // {
-//         //     $(this).parent().addClass('ready');
-//         // };
-//     };
-//     // repeater = setTimeout(showcurrenttime, 500);
-// }
-// showcurrenttime();
+    //current date and time
+    var now = moment();
+    var currentDate = now.format("dddd, MMMM Do");
+    var currentHour = now.get('hour')
+
+
+    // put current date/time in sub title
+    $("#currentDay").text(currentDate);
+
+    // Change style base on time
+$(".time-block").each(timeColor);
+function timeColor(){
+    console.log(currentHour, $(this).data("time"));
+    if ($(this).data("time") > currentHour) {
+            $(this).addClass("future");
+        }
+    else if ($(this).data("time") === currentHour) {
+            $(this).addClass("present");
+        }
+    else ($(this).data("time") < currentHour); {
+            $(this).addClass("past");
+        }   
+};
+
+
+    timeColor();
 
