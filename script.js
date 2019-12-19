@@ -25,42 +25,41 @@ function myStoredStuff() {
 // save button 
 $(document).ready(function () {
     $(".saveBtn").on("click", function () {
-        var value = $(this).siblings(".description").val();
-        var time = $(this).parent().attr("id");
+    var value = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
+
 // Set local storage
-        localStorage.setItem(time, value);
+localStorage.setItem(time, value);
     });
-// moments time
-    // $("#currentDay").text(moment().format('LLLL'));
 });
 
 
 // TIME
 
-    //current date and time
-    var now = moment();
-    var currentDate = now.format("dddd, MMMM Do");
-    var currentHour = now.get('hour')
+//current date and time
+
+var now = moment();
+var currentDate = now.format("dddd, MMMM Do");
+var currentHour = now.get('hour')
 
 
-    // put current date/time in sub title
-    $("#currentDay").text(currentDate);
+// put current date/time in sub title area
+$("#currentDay").text(currentDate);
 
-    // Change style base on time
+// Change style base on time
+
 $(".time-block").each(timeColor);
+
 function timeColor(){
-    console.log(currentHour, $(this).data("time"));
-    if ($(this).data("time") > currentHour) {
-            $(this).addClass("future");
-        }
-    else if ($(this).data("time") === currentHour) {
-            $(this).addClass("present");
-        }
-    else ($(this).data("time") < currentHour); {
-            $(this).addClass("past");
-        }   
+if ($(this).data("time") > currentHour) {
+    $(this).addClass("future");
+}
+else if ($(this).data("time") === currentHour) {
+    $(this).addClass("present");
+}
+else ($(this).data("time") < currentHour); {
+    $(this).addClass("past");
+}   
 };
-
-
-    timeColor();
+timeColor();
 
